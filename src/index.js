@@ -13,7 +13,8 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'renderer.js'),
+      //preload: path.join(__dirname, 'renderer.js'),
+      //removed for the moment, caused a weird problem
       nodeIntegration: true, // Required for using Node.js modules in the renderer process
     },
   });
