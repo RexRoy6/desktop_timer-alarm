@@ -1,0 +1,47 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Output of builds
+out/
+dist/
+temp/
+build/
+
+# Compiled source
+*.tsbuildinfo
+*.d.ts
+*.js.map
+*.js
+
+# TypeScript cache
+tsbuildinfo/
+
+# Electron Forge output
+/.webpack/
+forge.config.js
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# IDE specific
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Miscellaneous
+*.swp
+*.lock
