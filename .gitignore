@@ -23,7 +23,7 @@ build/
 *.tsbuildinfo
 *.d.ts
 *.js.map
-*.js
+#*.js
 
 # TypeScript cache
 tsbuildinfo/
