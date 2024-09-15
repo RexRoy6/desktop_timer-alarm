@@ -1,6 +1,6 @@
 {
-  "name": "desktop-app",
-  "productName": "desktop-app",
+  "name": "desktop-timer-alarm",
+  "productName": "desktop-timer-alarm",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/index.js",
