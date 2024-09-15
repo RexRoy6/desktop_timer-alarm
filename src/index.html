@@ -2,9 +2,39 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Timer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      #timer {
+        font-size: 2em;
+        margin: 20px;
+      }
+      input {
+        font-size: 1em;
+        padding: 5px;
+        width: 150px;
+      }
+      button {
+        font-size: 1em;
+        padding: 10px 15px;
+        margin: 5px;
+      }
+    </style>
   </head>
   <body>
-    Well hey there!!!
+    <div id="timer">00:00:00</div>
+    <input type="text" id="timeInput" placeholder="HH:MM:SS">
+    <br>
+    <button id="setButton">Set</button>
+    <button id="clearButton">Clear</button>
+    <br>
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+
+    <script src="renderer.js"></script>
   </body>
 </html>
