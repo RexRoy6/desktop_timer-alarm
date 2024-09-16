@@ -14,7 +14,7 @@ const keyPad = document.getElementById('keypad');
 const setClearDiv = document.getElementById('set-clear');
 
 // Load the alarm sound
-const alarmSound = new Audio('assets/sounds/ringtone-nokia-1994.mp3');
+const alarmSound = new Audio('assets/sounds/loud_alarm_sound.mp3');
 
 const testSoundButton = document.getElementById('testSoundButton');
 
@@ -47,6 +47,19 @@ const startTimer = () => {
             isRunning = false;
             updateDisplay();
             showSetClear(); // Show set-clear div again when timer finishes
+            alarmSound.play()
+                .then(() => {
+                    console.log('Sound played successfully.');
+                    // Stop the sound after 3 seconds
+                    setTimeout(() => {
+                        alarmSound.pause();
+                        alarmSound.currentTime = 0; // Reset the audio to the beginning
+                    }, 5000); // 3000ms = 3 seconds
+                })
+                .catch((error) => {
+                    console.error('Error playing sound:', error);
+                });
+
             return;
         }
         timeRemaining--;
