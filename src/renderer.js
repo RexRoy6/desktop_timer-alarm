@@ -45,8 +45,8 @@ setButton.addEventListener('click', () => {
     //const timeParts = timeInput.value.split(':').map(part => parseInt(part, 10));
     const timeParts = timerValue;
     timeRemaining =timeParts;
-   // updateDisplay();
-    //console.log(timerValue);
+    timerValue = ''; // Clear the input after setting
+    //updateTimerDisplayFromKeypad();
     // if (timeParts.length === 3) {
     //     const [hours, minutes, seconds] = timeParts;
     //     timeRemaining = hours * 3600 + minutes * 60 + seconds;
