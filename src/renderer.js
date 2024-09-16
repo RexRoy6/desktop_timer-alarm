@@ -4,11 +4,12 @@ let timeRemaining = 0; // Time in seconds
 let timerValue = ''; // For input from number keypad
 
 const display = document.getElementById('timer');
-const timeInput = document.getElementById('timeInput');
 const setButton = document.getElementById('setButton');
 const clearButton = document.getElementById('clearButton');
 const startButton = document.getElementById('startButton');
 const stopButton = document.getElementById('stopButton');
+const controlsDiv = document.getElementById('controls');
+const setClearDiv = document.getElementById('set-clear');
 
 // Function to update the display in HH:MM:SS format
 const updateDisplay = () => {
@@ -27,6 +28,7 @@ const startTimer = () => {
             clearInterval(timer);
             isRunning = false;
             updateDisplay();
+            showSetClear(); // Show set-clear div again when timer finishes
             return;
         }
         timeRemaining--;
@@ -40,12 +42,40 @@ const stopTimer = () => {
     isRunning = false;
 };
 
-// Set button: Get the input from text and set the timer
+// Function to hide set-clear div and show controls div
+const showControls = () => {
+    setClearDiv.style.display = 'none';
+    controlsDiv.style.display = 'flex';
+};
+
+// Function to show set-clear div and hide controls div
+const showSetClear = () => {
+    controlsDiv.style.display = 'none';
+    setClearDiv.style.display = 'flex';
+};
+
+// Set button: Get the input from number keypad and set the timer
 setButton.addEventListener('click', () => {
-    const timeParts = timerValue;
-    timeRemaining =timeParts;
+
+    // Pad timerValue to ensure it is at least 6 digits long
+    const paddedValue = timerValue.padStart(6, '0');
+
+    // Extract hours, minutes, and seconds from the padded value
+    const hours = parseInt(paddedValue.substring(0, 2), 10);
+    const minutes = parseInt(paddedValue.substring(2, 4), 10);
+    const seconds = parseInt(paddedValue.substring(4, 6), 10);
+
+    // Calculate total timeRemaining in seconds
+    timeRemaining = hours * 3600 + minutes * 60 + seconds;
+
+    // Update display and show controls
+    updateDisplay();
+    showControls(); // Show controls when timer is set
+
+    // Clear inputs
     clearinputs();
 });
+
 
 // Clear button: Clear input and reset the timer
 clearButton.addEventListener('click', () => {
@@ -53,10 +83,11 @@ clearButton.addEventListener('click', () => {
     timeRemaining = 0;
     timerValue = '';
     updateDisplay();
+    showSetClear(); // Show set-clear div again after clearing
 });
 
 const clearinputs = () => {
-    timerValue = ''; 
+    timerValue = '';
 }
 
 // Start and Stop buttons
@@ -83,4 +114,5 @@ numButtons.forEach(button => {
     });
 });
 
-
+// Initialize display to show set-clear div and hide controls div
+showSetClear();
