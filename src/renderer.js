@@ -13,6 +13,22 @@ const controlsDiv = document.getElementById('controls');
 const keyPad = document.getElementById('keypad');
 const setClearDiv = document.getElementById('set-clear');
 
+// Load the alarm sound
+const alarmSound = new Audio('assets/sounds/loud_alarm_sound.mp3');
+
+// const testSoundButton = document.getElementById('testSoundButton');
+
+// testSoundButton.addEventListener('click', () => {
+//     alarmSound.play()
+//         .then(() => {
+//             console.log('Sound played successfully.');
+//         })
+//         .catch((error) => {
+//             console.error('Error playing sound:', error);
+//         });
+// });
+
+
 // Function to update the display in HH:MM:SS format
 const updateDisplay = () => {
     const hours = Math.floor(timeRemaining / 3600).toString().padStart(2, '0');
@@ -31,6 +47,19 @@ const startTimer = () => {
             isRunning = false;
             updateDisplay();
             showSetClear(); // Show set-clear div again when timer finishes
+            alarmSound.play()
+                .then(() => {
+                    console.log('Sound played successfully.');
+                    // Stop the sound after 3 seconds
+                    setTimeout(() => {
+                        alarmSound.pause();
+                        alarmSound.currentTime = 0; // Reset the audio to the beginning
+                    }, 5000); // 3000ms = 3 seconds
+                })
+                .catch((error) => {
+                    console.error('Error playing sound:', error);
+                });
+
             return;
         }
         timeRemaining--;
@@ -42,6 +71,7 @@ const startTimer = () => {
 const stopTimer = () => {
     clearInterval(timer);
     isRunning = false;
+    alarmSound.pause();
 };
 
 const returnFunction = () => {
@@ -50,6 +80,7 @@ const returnFunction = () => {
     timerValue = '';
     updateDisplay();
     showSetClear();
+    alarmSound.pause();
 };
 
 // Function to hide set-clear div and show controls div
