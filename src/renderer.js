@@ -10,6 +10,7 @@ const startButton = document.getElementById('startButton');
 const stopButton = document.getElementById('stopButton');
 const returnButton = document.getElementById('return');
 const controlsDiv = document.getElementById('controls');
+const keyPad = document.getElementById('keypad');
 const setClearDiv = document.getElementById('set-clear');
 
 // Function to update the display in HH:MM:SS format
@@ -47,26 +48,30 @@ const returnFunction = () => {
     stopTimer();
     timeRemaining = 0;
     timerValue = '';
-    clearInterval(timer);
-    isRunning = false;
     updateDisplay();
     showSetClear();
-    return;
-}
-// Function to hide set-clear div and show controls div
-const showControls = () => {
-    setClearDiv.style.display = 'none';
-    controlsDiv.style.display = 'flex';
 };
 
-// Function to show set-clear div and hide controls div
-const showSetClear = () => {
-    controlsDiv.style.display = 'none';
-    setClearDiv.style.display = 'flex';
+// Function to hide set-clear div and show controls div
+const showControls = () => {
+    setClearDiv.style.visibility = 'hidden';
+    keyPad.style.visibility = 'hidden';
+    controlsDiv.style.visibility = 'visible';
 };
+
+const showSetClear = () => {
+    controlsDiv.style.visibility = 'hidden';
+    setClearDiv.style.visibility = 'visible';
+    keyPad.style.visibility = 'visible';
+};
+
 
 // Set button: Get the input from number keypad and set the timer
 setButton.addEventListener('click', () => {
+    if (timerValue.length === 0) {
+        alert('Please enter a time using the number keypad.');
+        return;
+    }
 
     // Pad timerValue to ensure it is at least 6 digits long
     const paddedValue = timerValue.padStart(6, '0');
@@ -87,7 +92,6 @@ setButton.addEventListener('click', () => {
     clearinputs();
 });
 
-
 // Clear button: Clear input and reset the timer
 clearButton.addEventListener('click', () => {
     stopTimer();
@@ -99,7 +103,7 @@ clearButton.addEventListener('click', () => {
 
 const clearinputs = () => {
     timerValue = '';
-}
+};
 
 // Start and Stop buttons
 startButton.addEventListener('click', startTimer);
