@@ -3,60 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title>Timer</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding: 20px;
-      }
-      #timer {
-        font-size: 2em;
-        margin: 20px;
-        border: 1px solid #000;
-        padding: 10px;
-        width: 200px;
-        display: inline-block;
-      }
-      input {
-        font-size: 1em;
-        padding: 5px;
-        width: 150px;
-      }
-      button {
-        font-size: 1em;
-        padding: 10px 15px;
-        margin: 5px;
-      }
-      .num-button {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5em;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div id="timer">00:00:00</div>
-    <!-- <br>
-    <input type="text" id="timeInput" placeholder="HH:MM:SS">
-    <br> -->
-    <button id="setButton">Set</button>
-    <button id="clearButton">Clear</button>
-    <br>
-    <button id="startButton">Start</button>
-    <button id="stopButton">Stop</button>
-    <br>
+    
+    <div id="controls">
+      <button id="startButton">Start</button>
+      <button id="stopButton">Stop</button>
+    </div>
+    
     <!-- Number keypad buttons -->
     <div id="keypad">
-      <button class="num-button">0</button>
-      <button class="num-button">1</button>
-      <button class="num-button">2</button>
-      <button class="num-button">3</button>
-      <button class="num-button">4</button>
       <button class="num-button">5</button>
       <button class="num-button">6</button>
       <button class="num-button">7</button>
       <button class="num-button">8</button>
       <button class="num-button">9</button>
+      <button class="num-button">0</button>
+      <button class="num-button">1</button>
+      <button class="num-button">2</button>
+      <button class="num-button">3</button>
+      <button class="num-button">4</button>
+    </div>
+
+    <div id="set-clear">
+      <button id="setButton">Set</button>
+      <button id="clearButton">Clear</button>
     </div>
 
     <script src="renderer.js"></script>
