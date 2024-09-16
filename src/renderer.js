@@ -13,6 +13,22 @@ const controlsDiv = document.getElementById('controls');
 const keyPad = document.getElementById('keypad');
 const setClearDiv = document.getElementById('set-clear');
 
+// Load the alarm sound
+const alarmSound = new Audio('assets/sounds/ringtone-nokia-1994.mp3');
+
+const testSoundButton = document.getElementById('testSoundButton');
+
+testSoundButton.addEventListener('click', () => {
+    alarmSound.play()
+        .then(() => {
+            console.log('Sound played successfully.');
+        })
+        .catch((error) => {
+            console.error('Error playing sound:', error);
+        });
+});
+
+
 // Function to update the display in HH:MM:SS format
 const updateDisplay = () => {
     const hours = Math.floor(timeRemaining / 3600).toString().padStart(2, '0');
