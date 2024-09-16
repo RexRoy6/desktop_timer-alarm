@@ -16,17 +16,17 @@ const setClearDiv = document.getElementById('set-clear');
 // Load the alarm sound
 const alarmSound = new Audio('assets/sounds/loud_alarm_sound.mp3');
 
-const testSoundButton = document.getElementById('testSoundButton');
+// const testSoundButton = document.getElementById('testSoundButton');
 
-testSoundButton.addEventListener('click', () => {
-    alarmSound.play()
-        .then(() => {
-            console.log('Sound played successfully.');
-        })
-        .catch((error) => {
-            console.error('Error playing sound:', error);
-        });
-});
+// testSoundButton.addEventListener('click', () => {
+//     alarmSound.play()
+//         .then(() => {
+//             console.log('Sound played successfully.');
+//         })
+//         .catch((error) => {
+//             console.error('Error playing sound:', error);
+//         });
+// });
 
 
 // Function to update the display in HH:MM:SS format
@@ -71,6 +71,7 @@ const startTimer = () => {
 const stopTimer = () => {
     clearInterval(timer);
     isRunning = false;
+    alarmSound.pause();
 };
 
 const returnFunction = () => {
@@ -79,6 +80,7 @@ const returnFunction = () => {
     timerValue = '';
     updateDisplay();
     showSetClear();
+    alarmSound.pause();
 };
 
 // Function to hide set-clear div and show controls div
