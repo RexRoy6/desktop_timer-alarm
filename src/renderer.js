@@ -8,6 +8,7 @@ const setButton = document.getElementById('setButton');
 const clearButton = document.getElementById('clearButton');
 const startButton = document.getElementById('startButton');
 const stopButton = document.getElementById('stopButton');
+const returnButton = document.getElementById('return');
 const controlsDiv = document.getElementById('controls');
 const setClearDiv = document.getElementById('set-clear');
 
@@ -42,6 +43,16 @@ const stopTimer = () => {
     isRunning = false;
 };
 
+const returnFunction = () => {
+    stopTimer();
+    timeRemaining = 0;
+    timerValue = '';
+    clearInterval(timer);
+    isRunning = false;
+    updateDisplay();
+    showSetClear();
+    return;
+}
 // Function to hide set-clear div and show controls div
 const showControls = () => {
     setClearDiv.style.display = 'none';
@@ -93,6 +104,7 @@ const clearinputs = () => {
 // Start and Stop buttons
 startButton.addEventListener('click', startTimer);
 stopButton.addEventListener('click', stopTimer);
+returnButton.addEventListener('click', returnFunction);
 
 // Function to update the timer display from the number keypad input
 const updateTimerDisplayFromKeypad = () => {
