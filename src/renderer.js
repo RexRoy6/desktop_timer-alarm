@@ -42,28 +42,22 @@ const stopTimer = () => {
 
 // Set button: Get the input from text and set the timer
 setButton.addEventListener('click', () => {
-    //const timeParts = timeInput.value.split(':').map(part => parseInt(part, 10));
     const timeParts = timerValue;
     timeRemaining =timeParts;
-    timerValue = ''; // Clear the input after setting
-    //updateTimerDisplayFromKeypad();
-    // if (timeParts.length === 3) {
-    //     const [hours, minutes, seconds] = timeParts;
-    //     timeRemaining = hours * 3600 + minutes * 60 + seconds;
-    //     updateDisplay();
-    // } else {
-    //     alert('Please enter time in HH:MM:SS format');
-    // }
+    clearinputs();
 });
 
 // Clear button: Clear input and reset the timer
 clearButton.addEventListener('click', () => {
-    timeInput.value = '';
     stopTimer();
     timeRemaining = 0;
-    timerValue = ''; // Clear number keypad input
+    timerValue = '';
     updateDisplay();
 });
+
+const clearinputs = () => {
+    timerValue = ''; 
+}
 
 // Start and Stop buttons
 startButton.addEventListener('click', startTimer);
@@ -89,14 +83,4 @@ numButtons.forEach(button => {
     });
 });
 
-// Optional: Add functionality to set timer from number keypad input
-setButton.addEventListener('click', () => {
-    if (timerValue.length === 6) {
-        const hours = parseInt(timerValue.substring(0, 2), 10);
-        const minutes = parseInt(timerValue.substring(2, 4), 10);
-        const seconds = parseInt(timerValue.substring(4, 6), 10);
-        timeRemaining = hours * 3600 + minutes * 60 + seconds;
-        updateDisplay();
-        timerValue = ''; // Clear the input after setting
-    }
-});
+
